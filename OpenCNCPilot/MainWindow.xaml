@@ -245,7 +245,7 @@
 				</Border>
 				<Border Style="{StaticResource stylePanelOut}">
 					<Expander Header="Macros" IsExpanded="{util:SettingBinding MacroExpanderOpen}">
-						<StackPanel>
+						<StackPanel Name="stackPanelMacros">
 							<Button Content="Add Macro" Name="ButtonAddMacro" Click="ButtonAddMacro_Click" Margin="2"/>
 							<StackPanel MinWidth="120" Name="StackPanelMacros">
 
@@ -324,7 +324,7 @@
 			<Label Name="LabelStateLimitY" Content="LimitY" FontWeight="ExtraBold" FontSize="40" Foreground="Red" Visibility="Collapsed"/>
 			<Label Name="LabelStateLimitZ" Content="LimitZ" FontWeight="ExtraBold" FontSize="40" Foreground="Red" Visibility="Collapsed"/>
 		</StackPanel>
-		<h:HelixViewport3D Name="viewport" ShowViewCube="False" Panel.ZIndex="0" PreviewKeyDown="viewport_PreviewKeyDown" Grid.ColumnSpan="2">
+		<h:HelixViewport3D Name="viewport" ShowViewCube="False" Panel.ZIndex="0" PreviewKeyDown="viewport_PreviewKeyDown" Grid.ColumnSpan="2" ZoomAroundMouseDownPoint="true">
 			<h:HelixViewport3D.Camera>
 				<PerspectiveCamera
 					Position="50, -150, 250"
@@ -369,6 +369,16 @@
 			<h:PointsVisual3D x:Name="ModelFileBoundaryPoints" Color="Green" Size="8"/>
 			<h:TextVisual3D x:Name="ModelTextMinPoint" UpDirection="0,1,0" Height="7" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 			<h:TextVisual3D x:Name="ModelTextMaxPoint" UpDirection="0,1,0" Height="7" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+			<h:QuadVisual3D Point1="-1000,-1000,0" Point2="1000,-1000,0" Point3="1000,1000,0"  Point4="-1000,1000,0">
+				<h:QuadVisual3D.Material>
+					<DiffuseMaterial Brush="Transparent">
+					</DiffuseMaterial>
+				</h:QuadVisual3D.Material>
+				<h:QuadVisual3D.BackMaterial>
+					<DiffuseMaterial Brush="Transparent">
+					</DiffuseMaterial>
+				</h:QuadVisual3D.BackMaterial>
+			</h:QuadVisual3D>
 		</h:HelixViewport3D>
 	</Grid>
 </Window>
